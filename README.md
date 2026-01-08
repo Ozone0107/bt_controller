@@ -8,26 +8,26 @@ pip install -r requirements.txt
 
 2. API 說明
 
-# Class: ESP32BTSender
+Class: ESP32BTSender
 
 __init__(port, baud_rate=115200, timeout=1):
 
-# port: (必填) 序列埠名稱。
-# baud_rate: 預設為 115200 (需與 ESP32 設定一致)。
+port: (必填) 序列埠名稱。
+baud_rate: 預設為 115200 (需與 ESP32 設定一致)。
 
 send_burst(cmd_type, burst_count, delay_sec, target_ids):
 
-# cmd_type (int): 指令代碼 (e.g., 0xA0).
-# burst_count (int): 連續發送次數.
-# delay_sec (float): 預期送達時間 (秒).
-# target_ids (list): 目標設備 ID 列表 (e.g., [0, 2, 5]).
-# Return: True 代表執行成功且收到 ESP32 回應；False 代表失敗或超時.
+cmd_type (int): 指令代碼 (e.g., 0xA0).
+burst_count (int): 連續發送次數.
+delay_sec (float): 預期送達時間 (秒).
+target_ids (list): 目標設備 ID 列表 (e.g., [0, 2, 5]).
+Return: True 代表執行成功且收到 ESP32 回應；False 代表失敗或超時.
 
 3. 使用範例
 
 from bt_controller import ESP32BTSender
 
-# 請修改為實際 COM Port
+## 請修改為實際 COM Port
 PORT = 'COM13' 
 
 with ESP32BTSender(port=PORT) as sender:

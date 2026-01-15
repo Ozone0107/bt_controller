@@ -3,7 +3,7 @@ from bt_controller import ESP32BTSender
 import time
 
 # 設定 Port (請修改為實際 Port)
-PORT = 'COM13' 
+PORT = 'COM9' 
 
 def main():
     try:
@@ -12,8 +12,8 @@ def main():
             print("--- Test 1: Send PLAY Command ---")
             success = sender.send_burst(
                 cmd_input='PLAY',
-                delay_sec=4, 
-                prep_led_sec=1,
+                delay_sec=10, 
+                prep_led_sec=4,
                 target_ids=[0, 1, 5],
                 retries=3,
             )
@@ -23,12 +23,12 @@ def main():
             else:
                 print(">>> Test 1 Failed!")
             
-            time.sleep(3)
+            time.sleep(12)
 
             print("--- Test 2: Send RESET Command ---")
             success = sender.send_burst(
                 cmd_input='RESET',
-                delay_sec=2, 
+                delay_sec=4, 
                 prep_led_sec=1,
                 target_ids=[0, 1, 5],
                 retries=3,
@@ -38,6 +38,8 @@ def main():
                 print(">>> Test 2 Passed!")
             else:
                 print(">>> Test 2 Failed!")
+            
+            time.sleep(5)
 
 
     except Exception as e:
